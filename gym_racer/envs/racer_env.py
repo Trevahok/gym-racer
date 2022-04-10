@@ -12,7 +12,7 @@ from pygame.sprite import spritecollide
 from gym_racer.envs.racer_car import RacerCar
 from gym_racer.envs.racer_map import RacerMap
 
-#  from gym_racer.envs.utils import getMyLogger
+# from gym_racer.envs.utils import getMyLogger
 
 
 class RacerEnv(gym.Env):
@@ -213,7 +213,7 @@ class RacerEnv(gym.Env):
             HEIGHT = self.racer_car.tot_ray_num
             N_CHANNELS = 1
             self.observation_space = spaces.Box(
-                low=0, high=1, shape=(HEIGHT, N_CHANNELS), dtype=np.uint8
+                low=0, high=1, shape=(HEIGHT, ), dtype=np.uint8
             )
 
         else:
@@ -339,7 +339,7 @@ class RacerEnv(gym.Env):
     def _analyze_collisions(self):
         """parse the collision matrix into obs
         """
-        #  logg = getMyLogger(f"c.{__class__.__name__}._analyze_collisions")
+        # logg = getMyLogger(f"c.{__class__.__name__}._analyze_collisions")
         #  logg.debug(f"Start _analyze_collisions")
 
         if self.sensor_array_type == "diamond":
@@ -357,8 +357,9 @@ class RacerEnv(gym.Env):
             #  logg.debug(f"pad_collisions\n{pad_collisions}")
 
             obs = np.argmin(pad_collisions, axis=1)
-            #  logg.debug(f"shape obs {obs.shape}")
-            #  logg.debug(f"obs: {obs}")
+            # logg.debug(f"shape obs {obs.shape}")
+            # logg.debug(f"obs: {obs}")
+            # print(obs.shape)
 
         else:
             raise ValueError(f"Unknown sensor_array_type {self.sensor_array_type}")

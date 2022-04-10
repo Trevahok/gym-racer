@@ -124,6 +124,7 @@ def test_interactive_env(num_frames, fps, sensor_array_type):
 
     # clock for interactive play
     clock = pygame.time.Clock()
+    racer_env.reset()
 
     # Main Loop
     going = True
@@ -215,6 +216,7 @@ def test_automatic_env(num_frames, render_mode, sensor_array_type) -> None:
 
     logg.info(f"Action Space {racer_env.action_space}")
     logg.info(f"State Space {racer_env.observation_space}")
+    racer_env.reset()
 
     going = True
     i = 0
